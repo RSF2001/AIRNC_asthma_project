@@ -12,11 +12,11 @@ The aim of this project is to create a machine learning model using validated pr
 
 Background 
 
-Asthma is a heterogeneous inflammatory airway disease that continues to cause considerable morbidity across the world, with poor asthma control leading to hospitalizations and rehospitalization. Asthma is estimated to affect 339 million people worldwide.1−3 and approximately 25 million Americans have asthma, which is equal to about 1 in 13 people, including 8% of adults and 7% of children.4 
+Asthma is a heterogeneous inflammatory airway disease that continues to cause considerable morbidity across the world, with poor asthma control leading to hospitalizations and rehospitalization. Asthma is estimated to affect 339 million people worldwide.1−3 and approximately 25 million Americans have asthma, which is equal to about 1 in 13 people, including 8% of adults and 7% of children.
 
-Being able to associate asthma patients and risk of hospitalization was key to our question and through research have found that patients with mild asthma remain at risk of severe exacerbations, accounting for 30–40% of asthma exacerbations requiring emergency care.5 Also noting that severe asthma that is inadequately controlled is associated with poor outcomes, such as diminished health-related quality of life, acute exacerbations, ER visits, and hospitalizations).6 
+Being able to associate asthma patients and risk of hospitalization was key to our question and through research have found that patients with mild asthma remain at risk of severe exacerbations, accounting for 30–40% of asthma exacerbations requiring emergency care. Also noting that severe asthma that is inadequately controlled is associated with poor outcomes, such as diminished health-related quality of life, acute exacerbations, ER visits, and hospitalizations). 
 
-The health economic impact of asthma is estimated to be about $80 billion in the US, of which $50.3 billion is related to direct medical costs. 7 Subsequently, the adjusted average of asthma-related costs per patient in a follow-up year were $58,000 due to non-severe uncontrolled asthma that resulted in an asthma hospitalization and $200,000 due to severe uncontrolled asthma that resulted in asthma hospitalization.8 Finally, there are many comorbidities seen in a majority of patients, which could potentially lead to higher costs, due to increased ER visits. The most common comorbidities cited were, coexisting Type 2 Inflammatory Airway Diseases, Chronic Rhinosinusitis with Nasal Polyps (CRSwNP) (45%), non-steroidal anti-inflammatory drug-exacerbated respiratory disease (NSAID-ERD)/ aspirin-exacerbated respiratory disease (AERD) (7.2%), and Allergic Rhinitis (72.6 – 94.3% of patients).9-13 
+The health economic impact of asthma is estimated to be about $80 billion in the US, of which $50.3 billion is related to direct medical costs.  Subsequently, the adjusted average of asthma-related costs per patient in a follow-up year were $58,000 due to non-severe uncontrolled asthma that resulted in an asthma hospitalization and $200,000 due to severe uncontrolled asthma that resulted in asthma hospitalization.8 Finally, there are many comorbidities seen in a majority of patients, which could potentially lead to higher costs, due to increased ER visits. The most common comorbidities cited were, coexisting Type 2 Inflammatory Airway Diseases, Chronic Rhinosinusitis with Nasal Polyps (CRSwNP) (45%), non-steroidal anti-inflammatory drug-exacerbated respiratory disease (NSAID-ERD)/ aspirin-exacerbated respiratory disease (AERD) (7.2%), and Allergic Rhinitis (72.6 – 94.3% of patients). 
 
  
 
@@ -78,14 +78,6 @@ Which variables has an impact on asthma-related ER visits?
 
 Identifying common comorbidities associated with asthma (Rhinitis, Seasonal Rhinitis, Chronic Bronchitis, and allergies) we seek to predict patient ER visits based on these variables. Race, poverty rates, air quality, and current medications were also used to assess the potential for subsequent ER visits of an asthma patient. By performing an in-depth literature search of known predicting variables, we sought to include similar variables in our model all at once to assess whether a patient did or did not have an ED visit. 
 
- 
-
- 
-
- 
-
- 
-
 Methods for data management 
 
 Python 3.9.1 was used for data analysis through Jupyter Notebook. A comprehensive EHR dataset available through our health system data warehouse was used to build and test a predictive machine learning model. The response variable chosen was emergency room visit/admission; therefore the “encounters” csv file was used to merge with the “patients” csv file using the patient identifier key. Further files including “conditions”, “allergies”, “medications”, and “observations” were likewise joined using the encounter identifier key. Outside data sources were identified and added that provided zip to county conversions, census data, poverty rates, and median household income levels at the county level.19 Furthermore, air quality data at the county level was incorporated into the model.20 Dichotomous classification predictors were created from the dataset for the following as being present or absent/not indicated in Table 1. These predictors were used as they have been shown to be associated with the higher risk for asthma exacerbation, sub-optimally controlled asthma, or emergency/urgent healthcare utilization.21 This working dataset contained 12,233 patient encounters, of which 3,083 were ED related and 9,150 were non-ED related encounters.  
@@ -99,74 +91,6 @@ After collecting and compiling the features relevant to patients with asthma, we
 The SVM (support vector machine) plots each instance of data as a point in n-dimensional space, with n being equal to the number of features included. The SVM then generates a hyperplane which represents the largest minimum boundary that maximizes the distance between the data points of both classes. Maximizing this marginal distance provides confidence that the model will correctly classify and differentiate future data.  
 
 The SVM regularization (or penalty) parameter of C was optimized at 1, which separates as many distinct instances as possible while maintaining the largest possible decision boundary. The best gamma hypermeter, the curvature parameter used to optimally fit the data, was determined to be 0.0428, indicative of a low probability of model overfit. 
-
- 
-
-Figure 1. SVM Confusion Matrix with “ED” = Emergency Admission and “No ED” = No Emergency Admission 
-
- 
-
-Accuracy 
-
-0.84 
-
-Precision 
-
-0.73 
-
-Recall 
-
-0.57 
-
-F-1 
-
-0.64 
-
- 
-
-Table 2. SVM Confusion Matrix Results 
-
-The accuracy score of this confusion matrix is 0.84, the highest accuracy score of achieved by the models tested. An 84% accuracy score represents the performance ratio of correctly predicted positive observations to total observations.  In addition to the highest accuracy, the SVM model also exhibits higher precision than either Naïve Bayes (0.57) or the Nearest Neighbor model (0.64). While our regularized logistic model yielded an equivalent accuracy score at 84%, the F1 score of the SVM model demonstrated more balance between precision and recall, with a score of 0.64 compared to 0.61 score given by regularized logistic regression. The necessary conditions concerning collinearity and independence among variables were not necessarily satisfied and may explain why the naïve Bayes model yielded the lowest accuracy among all models tested. 
-
-Since the support-vector machine learning algorithm is robustly designed to address classification problems, we trust that when correctly applied, this model will both recommend targeted interventions and reduce emergency room admissions among patients with asthma. 
-
- 
-
-Implementation Decision Options  
-
-After the predictive model has been created, our team has a few short-term decision options and short, medium, and long-term goals based on funding. The decision options include: 
-
-Digital Health App that can send data out to providers – estimated cost $100,000 
-
-Build the model as a tool that integrates within Electronic Medical Record Systems as a predictive model real time alert tool – estimated cost $1,000,000 
-
-Separate application that uses an API to communicate with Electronic Health Exchange  
-
- 
-
-Digital Health App with an API 
-
-Pros:  Since our model requires 15 inputs for Asthma prediction, we would easily be able to get the tool out rapidly and into the hands of the end-users, which are those with Asthma. This would be useful as a tool that could help direct asthma patients into the right direction for intervention. We would still be able to push data when needed to providers in the form of an API or simple HL7 data feed. Development cost should be lower because we would only need to develop an app and push it out to consumers.  
-
-Cons: Since data is collected from the Asthma end users the onus will be on providers (and their accompanying EMR systems) willing to accept the data and work with patients for their interventions. If providers are not appropriately reimbursed or there is no incentive to integrate additional technology stacks into their workflow, the likelihood of this solution being scaled out is low from the provider side.  
-
- 
-
-Integrate into Electronic Health Record Systems (Population Health workflows) as a real time alert tool 
-
-Pros: If data can be collected at the point of care, real time alerts can be sent through providers, health insurance companies, and other touchpoints of the care cycle where interventions could be done. Because it is integrated within the EMR platform, little extra work would need to be done by providers and the integration should align very with population health programs and disease management programs. 
-
-Cons: Working with EMR companies can be challenging as they are likely to have their own in-house solutions. If providers were wanting to have this integration, an EMR company would need to be willing to configure those platforms and systems for a tool that may not bring in enough additional revenue to justify the development costs. 
-
-  
-
-Separate Application that uses an API to communicate with EHR Systems via Electronic Health Exchange 
-
-Pros: The standalone tool could be built as a website that patients can access and if the patients are at elevated risk, the data could be sent via API to a central system or electronic health exchange (similar to how the CDC collects influenza data). 
-
-Cons:  Electronic health exchanges face tons of interoperability problems and data sharing between different providers, health systems, and patients could be difficult.  
-
- 
 
 Recommendation 
 
