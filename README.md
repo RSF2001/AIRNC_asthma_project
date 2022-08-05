@@ -1,38 +1,9 @@
- 
-
-EHR and Data Structures 
-
-QM 702QH 
-
-  
-
-  
-
-   
-
 EHR Grant Proposal 
 
   
 
 Identifying high-risk candidates for asthma intervention programs in the state of North Carolina, US 
 
- 
-
-  
-
-  
-
-  
-
-Health Analytics Team 9 
-
-  
-
-Kevin Alviar, Jarek Dombrowski, Dedrick Jordan, Rebecca Smith-Finlay 
-
-  
-
-Page Break
  
 
 Asthma is a common chronic medical condition that affects millions of children in the United States and leads to a high morbidity with significant healthcare resource use when not optimally managed. Childhood asthma is a heterogenous disease with many factors that are associated with the risk of exacerbation often resulting in emergency room visits and hospital admission. There are many variables that have been validated individually in prior studies that are associated with an increased likelihood of an asthma exacerbation leading to hospitalization.  
